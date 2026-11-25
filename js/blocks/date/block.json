@@ -1,0 +1,53 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "campaign-bandit/date",
+	"title": "Date field",
+	"category": "campaign-bandit",
+	"icon": "calendar-alt",
+	"description": "A date field for a Campaign Bandit form, such as an event or pickup date.",
+	"textdomain": "campaign-bandit",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Date"
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		},
+		"fieldKey": {
+			"type": "string",
+			"default": "date"
+		},
+		"hideLabel": {
+			"type": "boolean",
+			"default": false
+		},
+		"range": {
+			"type": "string",
+			"enum": [ "any", "not_past", "within", "between" ],
+			"default": "any"
+		},
+		"withinDays": {
+			"type": "number",
+			"default": 365
+		},
+		"from": {
+			"type": "string",
+			"default": ""
+		},
+		"to": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "file:./index.js",
+	"parent": [
+		"campaign-bandit/form"
+	]
+}

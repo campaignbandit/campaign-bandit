@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "campaign-bandit/form",
+	"title": "Form",
+	"category": "campaign-bandit",
+	"icon": "feedback",
+	"description": "A lead form. Every lead form is a Campaign Bandit form, so leads reach their destinations.",
+	"textdomain": "campaign-bandit",
+	"attributes": {
+		"submitLabel": {
+			"type": "string",
+			"default": "Submit"
+		},
+		"successMessage": {
+			"type": "string",
+			"default": "Thank you! We'll be in touch soon."
+		},
+		"layout": {
+			"type": "string",
+			"enum": [
+				"stacked",
+				"row"
+			],
+			"default": "stacked"
+		},
+		"buttonBackground": {
+			"type": "string",
+			"default": ""
+		},
+		"buttonText": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false,
+		"multiple": false
+	},
+	"editorScript": "file:./index.js"
+}

@@ -1,0 +1,37 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "campaign-bandit/consent",
+	"title": "Consent",
+	"category": "campaign-bandit",
+	"icon": "feedback",
+	"description": "A consent checkbox. The exact text shown is stored with each lead.",
+	"textdomain": "campaign-bandit",
+	"attributes": {
+		"text": {
+			"type": "string",
+			"default": "I agree to be contacted about my request."
+		},
+		"required": {
+			"type": "boolean",
+			"default": true
+		},
+		"fieldKey": {
+			"type": "string",
+			"default": "consent"
+		},
+		"purpose": {
+			"type": "string",
+			"enum": [ "contact", "email", "sms" ],
+			"default": "contact"
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "file:./index.js",
+	"parent": [
+		"campaign-bandit/form"
+	]
+}

@@ -1,0 +1,63 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "campaign-bandit/choice",
+	"title": "Choice field",
+	"category": "campaign-bandit",
+	"icon": "feedback",
+	"description": "Single or multiple choice for a Campaign Bandit form.",
+	"textdomain": "campaign-bandit",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Choose one"
+		},
+		"placeholder": {
+			"type": "string",
+			"default": ""
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		},
+		"fieldKey": {
+			"type": "string",
+			"default": "choice"
+		},
+		"options": {
+			"type": "array",
+			"items": {
+				"type": "string"
+			},
+			"default": [
+				"Option 1",
+				"Option 2"
+			]
+		},
+		"multiple": {
+			"type": "boolean",
+			"default": false
+		},
+		"display": {
+			"type": "string",
+			"enum": [
+				"options",
+				"chips",
+				"dropdown"
+			],
+			"default": "options"
+		},
+		"hideLabel": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "file:./index.js",
+	"parent": [
+		"campaign-bandit/form"
+	]
+}

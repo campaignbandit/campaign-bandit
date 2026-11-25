@@ -1,0 +1,68 @@
+<!--
+Title: Split modal: quote request
+Slug: split-modal-quote
+Description: A photo beside a quote form with name, email, phone, a project dropdown and an optional marketing opt-in. "No thanks" closes it; after sending, a thank-you screen replaces the form side.
+Keywords: modal, quote, estimate, lead, renovation, split
+Settings: {"format":"modal","goal":"form","appearance":{"edge":true,"width":880,"backdrop":"#111412","backdrop_opacity":62}}
+-->
+<!-- wp:group {"className":"cbandit-pattern\u002d\u002dsplit-modal-quote","style":{"color":{"background":"#ffffff","text":"#17201b"},"spacing":{"padding":{"top":"0","right":"0","bottom":"0","left":"0"},"blockGap":"0"}},"layout":{"type":"default"}} -->
+<div class="wp-block-group cbandit-pattern--split-modal-quote has-text-color has-background" style="color:#17201b;background-color:#ffffff;padding-top:0;padding-right:0;padding-bottom:0;padding-left:0"><!-- wp:columns {"style":{"spacing":{"blockGap":{"top":"0","left":"0"}}}} -->
+<div class="wp-block-columns"><!-- wp:column {"width":"380px","className":"cbandit-band cbandit-band\u002d\u002d108"} -->
+<div class="wp-block-column cbandit-band cbandit-band--108" style="flex-basis:380px"><!-- wp:image {"width":"380px","height":"540px","scale":"cover","sizeSlug":"full","className":"cbandit-band","style":{"spacing":{"margin":{"top":"0","right":"0","bottom":"0","left":"0"}}}} -->
+<figure class="wp-block-image size-full is-resized cbandit-band" style="margin-top:0;margin-right:0;margin-bottom:0;margin-left:0"><img src="{{image:kitchen-portrait.webp}}" alt="A bright kitchen with a pale oak island and three bar stools" style="object-fit:cover;width:380px;height:540px"/></figure>
+<!-- /wp:image --></div>
+<!-- /wp:column -->
+
+<!-- wp:column {"style":{"spacing":{"padding":{"top":"44px","right":"44px","bottom":"36px","left":"44px"},"blockGap":"14px"}}} -->
+<div class="wp-block-column" style="padding-top:44px;padding-right:44px;padding-bottom:36px;padding-left:44px"><!-- wp:paragraph {"style":{"typography":{"fontSize":"13px","fontWeight":"600","letterSpacing":"0.16em","textTransform":"uppercase"},"color":{"text":"#1f3a2e"}}} -->
+<p class="has-text-color" style="color:#1f3a2e;font-size:13px;font-weight:600;letter-spacing:0.16em;text-transform:uppercase">Northline Renovations</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:heading {"style":{"typography":{"fontSize":"32px","lineHeight":"1.15","fontWeight":"700"}}} -->
+<h2 class="wp-block-heading" style="font-size:32px;font-weight:700;line-height:1.15">Get your free kitchen quote in 60 seconds</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontSize":"17px","lineHeight":"1.5"},"color":{"text":"#3c4640"}}} -->
+<p class="has-text-color" style="color:#3c4640;font-size:17px;line-height:1.5">Tell us about your project. A designer calls you within one business hour with a fixed-price estimate.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:campaign-bandit/form {"submitLabel":"Get my free quote","successMessage":"Thanks! A Northline designer will call you within one business hour with your fixed-price estimate.","buttonBackground":"#1f3a2e","buttonText":"#ffffff"} -->
+<!-- wp:campaign-bandit/text {"placeholder":"Full name","required":true} /-->
+
+<!-- wp:campaign-bandit/email {"placeholder":"you@example.com","required":true} /-->
+
+<!-- wp:campaign-bandit/phone {"placeholder":"(416) 555-0123"} /-->
+
+<!-- wp:campaign-bandit/choice {"label":"Project","required":true,"fieldKey":"project","options":["Kitchen","Bathroom","Basement","Whole home"],"display":"dropdown"} /-->
+
+<!-- wp:campaign-bandit/consent {"text":"Send me design ideas and offers by email. Unsubscribe any time.","required":false} /-->
+<!-- /wp:campaign-bandit/form -->
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"className":"is-style-cbandit-dismiss"} -->
+<div class="wp-block-button is-style-cbandit-dismiss"><a class="wp-block-button__link wp-element-button" href="#">No thanks</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+
+<!-- wp:campaign-bandit/success -->
+<!-- wp:heading {"style":{"typography":{"fontSize":"32px","lineHeight":"1.15","fontWeight":"700"}}} -->
+<h2 class="wp-block-heading" style="font-size:32px;font-weight:700;line-height:1.15">Thanks! Your quote is on its way.</h2>
+<!-- /wp:heading -->
+
+<!-- wp:paragraph {"style":{"typography":{"fontSize":"17px","lineHeight":"1.5"},"color":{"text":"#3c4640"}}} -->
+<p class="has-text-color" style="color:#3c4640;font-size:17px;line-height:1.5">A Northline designer will call you within one business hour. We’ve also emailed you a copy of your request.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:buttons {"layout":{"type":"flex","verticalAlignment":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button {"style":{"color":{"background":"#1f3a2e","text":"#ffffff"},"border":{"radius":"0px"},"spacing":{"padding":{"top":"12px","right":"24px","bottom":"12px","left":"24px"}}}} -->
+<div class="wp-block-button"><a class="wp-block-button__link has-text-color has-background wp-element-button" href="#" style="border-radius:0px;color:#ffffff;background-color:#1f3a2e;padding-top:12px;padding-right:24px;padding-bottom:12px;padding-left:24px">See recent kitchen projects</a></div>
+<!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-cbandit-dismiss"} -->
+<div class="wp-block-button is-style-cbandit-dismiss"><a class="wp-block-button__link wp-element-button" href="#">Close</a></div>
+<!-- /wp:button --></div>
+<!-- /wp:buttons -->
+<!-- /wp:campaign-bandit/success --></div>
+<!-- /wp:column --></div>
+<!-- /wp:columns --></div>
+<!-- /wp:group -->

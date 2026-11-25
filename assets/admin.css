@@ -1,0 +1,1706 @@
+/*
+ * Campaign Bandit admin screens (decision 0012). Look rules (03): standard admin
+ * chrome, corners of 2px or less, full borders, status as a tinted label with a dot,
+ * no gradients or shadows.
+ */
+
+.cbandit-muted {
+	color: #646970;
+}
+
+/* Status: tinted label with a dot, never colour alone. */
+.cbandit-status {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 2px 8px;
+	border: 1px solid #dcdcde;
+	border-radius: 2px;
+	background: #f6f7f7;
+	color: #1d2327;
+	font-size: 12px;
+	line-height: 18px;
+	white-space: nowrap;
+}
+
+.cbandit-status::before {
+	content: "";
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #8c8f94;
+}
+
+.cbandit-status--good {
+	border-color: #b8e6bf;
+	background: #edfaef;
+}
+
+.cbandit-status--good::before {
+	background: #00a32a;
+}
+
+.cbandit-status--attention {
+	border-color: #f5e6ab;
+	background: #fcf9e8;
+}
+
+.cbandit-status--attention::before {
+	background: #dba617;
+}
+
+.cbandit-status--bad {
+	border-color: #facfd2;
+	background: #fcf0f1;
+}
+
+.cbandit-status--bad::before {
+	background: #d63638;
+}
+
+/* Leads: the list, with the detail panel beside it when a lead is open. */
+.cbandit-leads-layout {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(300px, 380px);
+	gap: 20px;
+	align-items: start;
+}
+
+@media (max-width: 1100px) {
+	.cbandit-leads-layout {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	/* Stacked: the placeholder adds nothing on small screens. */
+	.cbandit-lead-detail--empty {
+		display: none;
+	}
+}
+
+.cbandit-leads .wp-list-table .column-received {
+	width: 170px;
+}
+
+.cbandit-leads .wp-list-table .column-status {
+	width: 140px;
+}
+
+.cbandit-leads .wp-list-table tr.cbandit-row-open {
+	background: #f0f6fc;
+}
+
+.cbandit-lead-filters label {
+	margin: 0 4px 0 8px;
+	line-height: 30px;
+}
+
+.cbandit-lead-detail {
+	margin-top: 9px;
+	padding: 16px 20px 20px;
+	border: 1px solid #c3c4c7;
+	border-radius: 2px;
+	background: #fff;
+}
+
+.cbandit-lead-detail__head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.cbandit-lead-detail h2 {
+	margin: 0 0 8px;
+	font-size: 16px;
+	overflow-wrap: anywhere;
+}
+
+.cbandit-lead-detail h3 {
+	margin: 20px 0 8px;
+	font-size: 13px;
+}
+
+.cbandit-close {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	min-height: 44px;
+	margin: -12px -12px 0 0;
+	color: #1d2327;
+	text-decoration: none;
+}
+
+.cbandit-dl {
+	display: grid;
+	grid-template-columns: minmax(90px, 35%) 1fr;
+	gap: 6px 12px;
+	margin: 12px 0 0;
+}
+
+.cbandit-dl dt {
+	color: #646970;
+}
+
+.cbandit-dl dd {
+	margin: 0;
+	overflow-wrap: anywhere;
+}
+
+.cbandit-consent {
+	margin: 0;
+	padding: 8px 12px;
+	border: 1px solid #dcdcde;
+	border-radius: 2px;
+	background: #f6f7f7;
+}
+
+.cbandit-explanation {
+	margin: 0;
+}
+
+.cbandit-explanation li {
+	display: flex;
+	gap: 6px;
+	margin-bottom: 4px;
+}
+
+.cbandit-explanation .dashicons {
+	color: #646970;
+}
+
+.cbandit-lead-actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin-top: 24px;
+	padding-top: 16px;
+	border-top: 1px solid #dcdcde;
+}
+
+.cbandit-lead-actions form {
+	margin: 0;
+}
+
+.cbandit-lead-detail--empty {
+	color: #646970;
+}
+
+.cbandit-lead-detail--empty p {
+	margin: 0;
+}
+
+/* Destructive, without a second accent-coloured button. */
+.wp-core-ui .button.cbandit-button-delete {
+	border-color: #d63638;
+	color: #b32d2e;
+}
+
+.wp-core-ui .button.cbandit-button-delete:hover,
+.wp-core-ui .button.cbandit-button-delete:focus {
+	border-color: #b32d2e;
+	background: #fcf0f1;
+	color: #8a2424;
+}
+
+.cbandit-retention {
+	margin: 12px 0 0;
+	color: #646970;
+}
+
+/* Dashboard (S10): bordered cards and figures, no shadows. */
+.cbandit-card {
+	margin: 20px 0;
+	padding: 16px 20px;
+	border: 1px solid #c3c4c7;
+	border-radius: 2px;
+	background: #fff;
+}
+
+.cbandit-card h2 {
+	margin: 0 0 12px;
+	font-size: 14px;
+}
+
+.cbandit-figures {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 12px;
+	margin: 20px 0;
+}
+
+.cbandit-figure {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	margin: 0;
+	padding: 16px 20px;
+	border: 1px solid #c3c4c7;
+	border-radius: 2px;
+	background: #fff;
+}
+
+.cbandit-figure__value {
+	font-size: 28px;
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+.cbandit-figure__value a {
+	text-decoration: none;
+}
+
+.cbandit-figure__label {
+	color: #646970;
+}
+
+.cbandit-steps {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	margin: 0;
+	list-style: none;
+}
+
+.cbandit-step {
+	display: flex;
+	gap: 10px;
+	margin: 0;
+}
+
+.cbandit-step__mark {
+	flex: 0 0 18px;
+	height: 18px;
+	margin-top: 1px;
+	border: 2px solid #8c8f94;
+	border-radius: 50%;
+	box-sizing: border-box;
+}
+
+.cbandit-step.is-done .cbandit-step__mark {
+	border-color: #00a32a;
+	background: #00a32a;
+	box-shadow: inset 0 0 0 3px #fff;
+}
+
+.cbandit-step__text {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+.cbandit-step.is-done .cbandit-step__text > :first-child {
+	color: #646970;
+	text-decoration: line-through;
+}
+
+.cbandit-campaigns-table .num {
+	text-align: right;
+}
+
+.cbandit-upgrade ul {
+	margin: 0 0 0 18px;
+	list-style: disc;
+}
+
+/* Delivery log (S6) and Destinations (S7). */
+.cbandit-timeline {
+	margin: 8px 0 0;
+	list-style: none;
+}
+
+.cbandit-timeline__item {
+	position: relative;
+	margin: 0;
+	padding: 0 0 10px 18px;
+	border-left: 1px solid #dcdcde;
+	margin-left: 4px;
+}
+
+.cbandit-timeline__item::before {
+	content: "";
+	position: absolute;
+	top: 5px;
+	left: -5px;
+	width: 9px;
+	height: 9px;
+	border-radius: 50%;
+	background: #8c8f94;
+}
+
+.cbandit-timeline__item--good::before {
+	background: #00a32a;
+}
+
+.cbandit-timeline__item--attention::before {
+	background: #dba617;
+}
+
+.cbandit-timeline__item--bad::before {
+	background: #d63638;
+}
+
+.cbandit-timeline__time {
+	display: block;
+	color: #646970;
+	font-size: 12px;
+}
+
+.cbandit-timeline__excerpt {
+	display: block;
+	margin-top: 4px;
+	overflow-wrap: anywhere;
+}
+
+.cbandit-inline-form {
+	display: inline-block;
+	margin: 0 8px 8px 0;
+}
+
+.cbandit-field-keys {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 16px;
+	margin: 8px 0 0 24px;
+}
+
+.cbandit-json {
+	max-height: 360px;
+	margin: 8px 0;
+	padding: 12px;
+	overflow: auto;
+	border: 1px solid #dcdcde;
+	border-radius: 2px;
+	background: #f6f7f7;
+	font-size: 12px;
+	white-space: pre;
+}
+
+.cbandit-leads .cbandit-inline-form {
+	margin: 0 0 0 8px;
+	vertical-align: middle;
+}
+
+/* Secondary buttons in neutral grey on our screens: the accent stays on the one
+   primary action (look rules; the editor sidebar does the same). */
+.cbandit-leads .button:not(.button-primary):not(.cbandit-button-delete),
+.cbandit-dashboard .button:not(.button-primary):not(.cbandit-button-delete),
+.cbandit-destinations .button:not(.button-primary):not(.cbandit-button-delete),
+.cbandit-sites .button:not(.button-primary):not(.cbandit-button-delete),
+.cbandit-publish .button:not(.button-primary):not(.cbandit-button-delete),
+.cbandit-campaign .button:not(.button-primary):not(.cbandit-button-delete),
+.cbandit-connection .button:not(.button-primary):not(.cbandit-button-delete) {
+	border-color: #8c8f94;
+	background: #fff;
+	color: #1d2327;
+}
+
+.cbandit-leads .button:not(.button-primary):not(.cbandit-button-delete):hover,
+.cbandit-dashboard .button:not(.button-primary):not(.cbandit-button-delete):hover,
+.cbandit-destinations .button:not(.button-primary):not(.cbandit-button-delete):hover,
+.cbandit-sites .button:not(.button-primary):not(.cbandit-button-delete):hover,
+.cbandit-publish .button:not(.button-primary):not(.cbandit-button-delete):hover,
+.cbandit-campaign .button:not(.button-primary):not(.cbandit-button-delete):hover,
+.cbandit-connection .button:not(.button-primary):not(.cbandit-button-delete):hover {
+	border-color: #1d2327;
+	background: #f6f7f7;
+	color: #1d2327;
+}
+
+/* Destinations: the list on the left, the open destination in a panel on the right. */
+.cbandit-split {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(320px, 400px);
+	gap: 20px;
+	align-items: start;
+	margin-top: 9px;
+}
+
+@media (max-width: 1100px) {
+	.cbandit-split {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.cbandit-split__aside > .cbandit-panel-card:first-child,
+.cbandit-split__aside > .cbandit-help:first-child {
+	margin-top: 0;
+}
+
+.cbandit-help__title {
+	margin: 0;
+	padding: 12px 16px 4px;
+	font-size: 13px;
+	text-transform: uppercase;
+	letter-spacing: 0.02em;
+	color: #50575e;
+}
+
+.cbandit-destinations .cbandit-row-open,
+.cbandit-sites .cbandit-row-open {
+	background: #f0f6fc;
+}
+
+.cbandit-panel-card {
+	padding: 16px 20px 20px;
+	border: 1px solid #c3c4c7;
+	border-radius: 2px;
+	background: #fff;
+}
+
+.cbandit-panel-card__head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.cbandit-panel-card__head h2 {
+	margin: 0 0 8px;
+	font-size: 16px;
+	overflow-wrap: anywhere;
+}
+
+.cbandit-panel-card .notice {
+	margin: 12px 0 0;
+}
+
+.cbandit-panel-card__section {
+	margin-top: 20px;
+	padding-top: 16px;
+	border-top: 1px solid #dcdcde;
+}
+
+.cbandit-panel-card__section h3 {
+	margin: 0 0 6px;
+	font-size: 13px;
+}
+
+.cbandit-panel-card__section details {
+	margin-top: 8px;
+}
+
+.cbandit-panel-card__section summary {
+	cursor: pointer;
+	min-height: 24px;
+}
+
+/* Stacked form fields that fit the panel. */
+.cbandit-stacked {
+	margin-top: 12px;
+}
+
+.cbandit-stacked p,
+.cbandit-stacked fieldset {
+	margin: 0 0 14px;
+}
+
+.cbandit-stacked label,
+.cbandit-stacked legend {
+	display: block;
+	margin-bottom: 4px;
+	font-weight: 600;
+}
+
+.cbandit-stacked fieldset label {
+	font-weight: 400;
+}
+
+.cbandit-stacked input[type="text"],
+.cbandit-stacked input[type="url"],
+.cbandit-stacked textarea {
+	width: 100%;
+}
+
+.cbandit-stacked .description {
+	display: block;
+	margin-top: 4px;
+}
+
+.cbandit-stacked .cbandit-field-keys {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 14px;
+	margin: 6px 0 0 24px;
+}
+
+.cbandit-stacked .cbandit-field-keys label {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	margin: 0;
+}
+
+/* Help under the list: closed until the user opens a topic. */
+.cbandit-help {
+	margin-top: 16px;
+	border: 1px solid #c3c4c7;
+	border-radius: 2px;
+	background: #fff;
+}
+
+.cbandit-help__item + .cbandit-help__item {
+	border-top: 1px solid #dcdcde;
+}
+
+.cbandit-help__item summary {
+	display: flex;
+	align-items: center;
+	min-height: 44px;
+	padding: 0 16px;
+	cursor: pointer;
+	font-weight: 600;
+	list-style: none;
+}
+
+.cbandit-help__item summary::-webkit-details-marker {
+	display: none;
+}
+
+/* A chevron that turns when the topic opens. */
+.cbandit-help__item summary::before {
+	content: "";
+	width: 7px;
+	height: 7px;
+	margin-right: 12px;
+	border-right: 2px solid #50575e;
+	border-bottom: 2px solid #50575e;
+	transform: rotate(-45deg);
+	transition: transform 0.15s ease;
+}
+
+.cbandit-help__item[open] summary::before {
+	transform: rotate(45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.cbandit-help__item summary::before {
+		transition: none;
+	}
+}
+
+.cbandit-help__body {
+	padding: 0 16px 12px;
+}
+
+.cbandit-legend {
+	margin: 8px 0 0;
+	list-style: none;
+}
+
+.cbandit-legend li {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 8px;
+	color: #646970;
+}
+
+.cbandit-help-dl {
+	margin: 0;
+}
+
+.cbandit-help-dl dt {
+	margin-top: 8px;
+	font-weight: 600;
+}
+
+.cbandit-help-dl dd {
+	margin: 2px 0 0;
+	color: #3c434a;
+}
+
+
+/* Sites (S2): seat usage under the title, staging tags, the pairing key. */
+.cbandit-seats {
+	margin: 4px 0 0;
+	color: #50575e;
+}
+
+.cbandit-tag {
+	display: inline-block;
+	margin-left: 6px;
+	padding: 0 6px;
+	border-radius: 2px;
+	background: #f0f0f1;
+	color: #50575e;
+	font-size: 12px;
+	line-height: 20px;
+	vertical-align: 1px;
+}
+
+.cbandit-sites tr.cbandit-row-muted td {
+	color: #8c8f94;
+}
+
+.cbandit-copy {
+	display: flex;
+	gap: 6px;
+}
+
+.cbandit-copy input {
+	flex: 1;
+	min-width: 0;
+	font-size: 12px;
+}
+
+.cbandit-connect-steps {
+	margin: 4px 0 0 18px;
+	color: #50575e;
+}
+
+.cbandit-pairing__state .spinner {
+	float: none;
+	margin: -2px 4px 0 0;
+}
+
+.cbandit-pairing {
+	margin-top: 8px;
+}
+
+.cbandit-pairing + .cbandit-stacked {
+	margin-top: 20px;
+	padding-top: 16px;
+	border-top: 1px solid #dcdcde;
+}
+
+.cbandit-copy[hidden] {
+	display: none;
+}
+
+.cbandit-pairing__state.is-paired {
+	color: #007017;
+	font-weight: 600;
+}
+
+.cbandit-pairing__state.is-paired a {
+	margin-left: 4px;
+	font-weight: 400;
+}
+
+.cbandit-hub-campaigns {
+	margin: 0;
+}
+
+.cbandit-hub-campaigns li {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+}
+
+/* Campaign detail (S12) and Publish (S5). */
+.cbandit-breadcrumb {
+	margin: 12px 0 0;
+	color: #50575e;
+}
+
+.cbandit-campaign__head {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 12px;
+}
+
+.cbandit-campaign__head > div:first-child {
+	flex: 1 1 320px;
+	min-width: 0;
+}
+
+.cbandit-campaign__head h1 {
+	padding-top: 4px;
+}
+
+.cbandit-campaign__meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
+	gap: 8px;
+	margin: 4px 0 0;
+}
+
+.cbandit-campaign__actions {
+	display: flex;
+	flex: 0 0 auto;
+	gap: 8px;
+	padding-top: 9px;
+}
+
+.cbandit-tabs {
+	margin-top: 16px;
+}
+
+.cbandit-tab-panel {
+	padding-top: 16px;
+}
+
+.cbandit-row-actions {
+	white-space: nowrap;
+	text-align: right;
+}
+
+.cbandit-row-actions .cbandit-inline-form {
+	display: inline-block;
+	margin: 0 4px 0 0;
+}
+
+td.cbandit-stale {
+	color: #996800;
+}
+
+.cbandit-publish .cbandit-card h2,
+.cbandit-publish-summary h2 {
+	margin: 0 0 8px;
+	font-size: 14px;
+}
+
+.cbandit-card--table {
+	padding-bottom: 20px;
+}
+
+.cbandit-checklist {
+	margin: 0;
+}
+
+.cbandit-checklist__item {
+	position: relative;
+	margin: 0 0 6px;
+	padding-left: 18px;
+}
+
+.cbandit-checklist__item::before {
+	content: "";
+	position: absolute;
+	top: 7px;
+	left: 2px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: #dba617;
+}
+
+.cbandit-checklist__item--error::before {
+	background: #d63638;
+}
+
+.cbandit-publish-summary__counts {
+	color: #50575e;
+}
+
+.cbandit-publish-at {
+	display: block;
+	margin-top: 6px;
+}
+
+.cbandit-publish-at[hidden] {
+	display: none;
+}
+
+.cbandit-publish-blocked {
+	color: #b32d2e;
+}
+
+.cbandit-publish .cbandit-wide {
+	width: 100%;
+	justify-content: center;
+}
+
+.cbandit-check {
+	font-weight: 400 !important;
+}
+
+.cbandit-scheduled form p {
+	margin-top: 0;
+}
+
+.cbandit-result-list {
+	margin: 0 0 8px 18px;
+	list-style: disc;
+}
+
+/* Hub Overview (S1). */
+.cbandit-client-filter {
+	display: inline-block;
+	margin-left: 8px;
+	vertical-align: middle;
+}
+
+.cbandit-attention {
+	margin-top: 0;
+}
+
+.cbandit-attention__list {
+	margin: 0;
+}
+
+.cbandit-attention__item {
+	display: flex;
+	align-items: baseline;
+	gap: 10px;
+	margin: 0;
+	padding: 8px 0;
+	border-top: 1px solid #f0f0f1;
+}
+
+.cbandit-attention__item:first-child {
+	border-top: 0;
+}
+
+.cbandit-attention__item .cbandit-status {
+	flex: 0 0 auto;
+	padding: 0;
+	background: none;
+}
+
+.cbandit-attention__text {
+	flex: 1 1 auto;
+}
+
+.cbandit-attention__item a {
+	flex: 0 0 auto;
+	white-space: nowrap;
+}
+
+.cbandit-overview__title {
+	margin: 0 0 8px;
+	font-size: 14px;
+}
+
+.cbandit-overview__list {
+	margin: 0;
+}
+
+.cbandit-overview__list li {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+	padding: 6px 0;
+}
+
+.cbandit-overview__list li a {
+	flex: 1 1 auto;
+}
+
+.cbandit-overview .cbandit-split__aside > .cbandit-panel-card + .cbandit-panel-card {
+	margin-top: 16px;
+}
+
+/* Row actions as links (refreshed S12 mockups): stacked, quiet. */
+.cbandit-row-links a,
+.cbandit-row-actions a,
+.cbandit-row-actions .button-link {
+	display: inline-block;
+	margin: 0 12px 4px 0;
+}
+
+.cbandit-row-actions {
+	text-align: left;
+}
+
+.cbandit-row-actions .cbandit-inline-form {
+	display: inline-block;
+	margin: 0 12px 4px 0;
+}
+
+/* Compare with draft. */
+.cbandit-compare {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	gap: 16px;
+}
+
+.cbandit-compare__side h3 {
+	margin: 0 0 8px;
+}
+
+.cbandit-compare__content {
+	padding: 16px 20px;
+	border: 1px solid #c3c4c7;
+	background: #fff;
+}
+
+/* Site settings (FR-42) on Campaign detail. */
+.cbandit-site-settings {
+	margin-bottom: 16px;
+	max-width: 720px;
+}
+
+.cbandit-site-settings__choices {
+	display: block;
+	margin: 6px 0 0 24px;
+}
+
+.cbandit-site-settings__choices label {
+	display: block;
+	font-weight: 400;
+}
+
+.cbandit-site-settings__choices textarea {
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.cbandit-site-settings__choices label[for] {
+	font-weight: 600;
+}
+
+/* Choices with a line of explanation each: URL changed (S2, BR-34). */
+.cbandit-choice-list {
+	margin: 12px 0 0;
+	padding: 0;
+	list-style: none;
+}
+
+.cbandit-choice-list li {
+	display: grid;
+	grid-template-columns: 11em 1fr;
+	gap: 12px;
+	align-items: baseline;
+	margin: 0 0 10px;
+}
+
+.cbandit-choice-list .cbandit-inline-form .button {
+	width: 100%;
+}
+
+@media (max-width: 600px) {
+	.cbandit-choice-list li {
+		grid-template-columns: 1fr;
+		gap: 4px;
+	}
+}
+
+/* S12 More menu: a quiet button that opens a short list of text actions. */
+.cbandit-more {
+	position: relative;
+	display: inline-block;
+}
+
+.cbandit-more > summary {
+	list-style: none;
+}
+
+.cbandit-more > summary::-webkit-details-marker {
+	display: none;
+}
+
+.cbandit-more > summary::after {
+	content: "";
+	display: inline-block;
+	margin-left: 6px;
+	border: 4px solid transparent;
+	border-top-color: currentColor;
+	vertical-align: middle;
+	transform: translateY(2px);
+}
+
+.cbandit-more__menu {
+	position: absolute;
+	right: 0;
+	z-index: 20;
+	min-width: 220px;
+	margin: 4px 0 0;
+	padding: 4px 0;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.cbandit-more__menu li {
+	margin: 0;
+}
+
+.cbandit-more__menu form {
+	margin: 0;
+}
+
+.cbandit-more__item {
+	display: block;
+	width: 100%;
+	padding: 6px 12px;
+	border: 0;
+	background: none;
+	color: #1d2327;
+	font: inherit;
+	text-align: left;
+	cursor: pointer;
+}
+
+.cbandit-more__item:hover,
+.cbandit-more__item:focus {
+	background: #f6f7f7;
+	outline: none;
+}
+
+.cbandit-more__item:focus-visible {
+	box-shadow: inset 0 0 0 2px #2271b1;
+}
+
+.cbandit-more__item.is-disabled {
+	color: #8c8f94;
+	cursor: default;
+}
+
+.cbandit-more__item.is-disabled .cbandit-muted {
+	display: block;
+	font-size: 12px;
+}
+
+/* S12: the client line's Change, and a choice inside the More menu. */
+.cbandit-inline-change {
+	display: inline-block;
+}
+
+.cbandit-inline-change > summary {
+	display: inline;
+	color: #2271b1;
+	cursor: pointer;
+	list-style: none;
+}
+
+.cbandit-inline-change > summary::-webkit-details-marker {
+	display: none;
+}
+
+.cbandit-inline-change form {
+	display: flex;
+	gap: 6px;
+	align-items: center;
+	margin: 6px 0 0;
+}
+
+.cbandit-more__choice {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	align-items: center;
+	padding: 6px 12px;
+}
+
+.cbandit-more__choice label {
+	width: 100%;
+}
+
+.cbandit-more__choice select {
+	flex: 1;
+	min-width: 0;
+}
+
+.cbandit-client-line {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	align-items: baseline;
+}
+
+/* Settings › Audit log (S8). */
+.cbandit-audit td:first-child,
+.cbandit-audit th:first-child {
+	width: 13em;
+	white-space: nowrap;
+}
+
+.cbandit-audit td:last-child,
+.cbandit-audit th:last-child {
+	width: 9em;
+}
+
+/* Campaign detail (S12): results and tabs on the left, Campaign settings on the right. */
+.cbandit-campaign__about {
+	margin: 2px 0 8px;
+	color: #50575e;
+}
+
+.cbandit-campaign__body {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) 340px;
+	gap: 24px;
+	align-items: start;
+	margin-top: 20px;
+}
+
+@media (max-width: 1080px) {
+	.cbandit-campaign__body {
+		grid-template-columns: minmax(0, 1fr);
+	}
+}
+
+.cbandit-campaign__main > * + * {
+	margin-top: 16px;
+}
+
+.cbandit-results > * + * {
+	margin-top: 12px;
+}
+
+.cbandit-results__head {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px 16px;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.cbandit-range {
+	display: inline-flex;
+	padding: 2px;
+	border: 1px solid #dcdcde;
+	background: #fff;
+}
+
+.cbandit-range__item {
+	padding: 4px 12px;
+	color: #50575e;
+	text-decoration: none;
+}
+
+.cbandit-range__item:hover {
+	color: #1d2327;
+}
+
+.cbandit-range__item.is-current {
+	background: #f0f0f1;
+	color: #1d2327;
+	font-weight: 600;
+}
+
+.cbandit-figures {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 12px;
+}
+
+@media (max-width: 1280px) {
+	.cbandit-figures {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+}
+
+.cbandit-figure {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	padding: 10px 14px 12px;
+	border: 1px solid #dcdcde;
+	border-bottom-width: 2px;
+	background: #fff;
+	text-align: left;
+	font: inherit;
+	color: inherit;
+	cursor: pointer;
+}
+
+.cbandit-figure:hover {
+	border-color: #c3c4c7;
+}
+
+.cbandit-figure[aria-pressed="true"] {
+	border-bottom-color: #3858e9;
+}
+
+.cbandit-figure:focus-visible {
+	outline: 2px solid #3858e9;
+	outline-offset: 2px;
+}
+
+.cbandit-figure__label {
+	color: #50575e;
+	font-size: 12px;
+}
+
+.cbandit-figure__value {
+	font-size: 22px;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.cbandit-figure__note {
+	color: #646970;
+	font-size: 12px;
+	min-height: 1.4em;
+}
+
+.cbandit-figure__note.is-up {
+	color: #007017;
+}
+
+.cbandit-figure__note.is-down {
+	color: #b32d2e;
+}
+
+.cbandit-chart {
+	padding: 14px 16px 12px;
+}
+
+.cbandit-chart__measure {
+	margin: 0;
+}
+
+.cbandit-chart__caption {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	gap: 6px 16px;
+	margin-bottom: 8px;
+	font-size: 13px;
+}
+
+.cbandit-chart__key {
+	display: inline-flex;
+	gap: 6px;
+	align-items: center;
+	color: #646970;
+	font-size: 12px;
+}
+
+.cbandit-chart__swatch {
+	display: inline-block;
+	width: 16px;
+	border-top: 2px solid #3858e9;
+}
+
+.cbandit-chart__swatch.is-previous {
+	margin-left: 8px;
+	border-top: 2px dashed #c3c4c7;
+}
+
+.cbandit-chart__plot {
+	position: relative;
+	height: 220px;
+}
+
+.cbandit-chart__plot svg {
+	display: block;
+	overflow: visible;
+}
+
+.cbandit-chart__grid {
+	stroke: #f0f0f1;
+	stroke-width: 1;
+}
+
+.cbandit-chart__tick {
+	fill: #8c8f94;
+	font-size: 11px;
+}
+
+.cbandit-chart__line {
+	fill: none;
+	stroke: #3858e9;
+	stroke-width: 1.75;
+	stroke-linejoin: round;
+	stroke-linecap: round;
+}
+
+.cbandit-chart__line.is-previous {
+	stroke: #c3c4c7;
+	stroke-width: 1.5;
+	stroke-dasharray: 3 4;
+}
+
+.cbandit-chart__marker {
+	stroke: #dcdcde;
+	stroke-width: 1;
+}
+
+.cbandit-chart__point {
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	margin: -8px 0 0 -8px;
+	padding: 0;
+	border: 0;
+	background: transparent;
+	cursor: default;
+}
+
+.cbandit-chart__point::after {
+	content: "";
+	position: absolute;
+	inset: 5px;
+	border-radius: 50%;
+	background: #3858e9;
+	box-shadow: 0 0 0 2px #fff;
+}
+
+.cbandit-chart__point:hover::after,
+.cbandit-chart__point:focus-visible::after {
+	inset: 3px;
+}
+
+.cbandit-chart__point:focus-visible {
+	outline: 2px solid #3858e9;
+	outline-offset: 1px;
+	border-radius: 50%;
+}
+
+.cbandit-chart__tag {
+	position: absolute;
+	transform: translate(4px, -2px);
+	padding: 0 4px;
+	background: #fff;
+	color: #646970;
+	font-size: 11px;
+	line-height: 16px;
+	text-decoration: none;
+	border: 1px solid #dcdcde;
+}
+
+.cbandit-chart__tag:hover {
+	color: #3858e9;
+	border-color: #3858e9;
+}
+
+.cbandit-chart__tip {
+	position: absolute;
+	z-index: 100;
+	transform: translate(-50%, -100%);
+	padding: 4px 8px;
+	background: #1d2327;
+	color: #fff;
+	font-size: 12px;
+	white-space: nowrap;
+	pointer-events: none;
+}
+
+.cbandit-chart__note {
+	margin: 8px 0 0;
+	color: #646970;
+	font-size: 12px;
+}
+
+.cbandit-chart__footer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 16px;
+	justify-content: space-between;
+	margin-top: 10px;
+	padding-top: 10px;
+	border-top: 1px solid #f0f0f1;
+	color: #646970;
+	font-size: 12px;
+}
+
+.cbandit-chart__table summary {
+	cursor: pointer;
+	color: #2271b1;
+}
+
+.cbandit-chart__table table {
+	margin-top: 8px;
+}
+
+.cbandit-setup {
+	padding: 0;
+}
+
+.cbandit-setup h2 {
+	margin: 0;
+	padding: 14px 18px;
+	border-bottom: 1px solid #f0f0f1;
+	font-size: 14px;
+}
+
+.cbandit-setup__row {
+	padding: 12px 18px;
+	border-bottom: 1px solid #f0f0f1;
+}
+
+.cbandit-setup__head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 8px;
+}
+
+.cbandit-setup__title {
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: #646970;
+}
+
+.cbandit-setup__row p {
+	margin: 4px 0 0;
+}
+
+.cbandit-setup__note {
+	margin: 0;
+	padding: 12px 18px;
+	font-size: 12px;
+}
+
+/* Overview: grouped attention rows and "Show n more" (S1). */
+.cbandit-attention__sites {
+	display: block;
+	margin-top: 2px;
+	color: #50575e;
+	font-size: 12px;
+}
+
+.cbandit-attention__more > summary {
+	margin-top: 8px;
+	color: #2271b1;
+	cursor: pointer;
+}
+
+.wp-list-table .column-cbandit_name {
+	width: 34%;
+}
+
+.cbandit-campaign__body > .cbandit-setup {
+	margin-top: 0;
+}
+
+/* Sites tab (S12): "Add to more sites" above the table. */
+.cbandit-sites-add {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 12px;
+	align-items: baseline;
+	margin: 0 0 12px;
+}
+
+/* Site detail (S13): the site card beside the content, the problems card, static figures. */
+.cbandit-site-card__body {
+	padding: 4px 18px 18px;
+}
+
+.cbandit-site-card__body > .cbandit-dl {
+	margin-top: 12px;
+}
+
+.cbandit-site-problems {
+	padding: 12px 16px;
+	border-color: #dba617;
+	background: #fcf9e8;
+}
+
+.cbandit-site-problems .cbandit-panel-card__section {
+	margin: 0;
+	padding: 0;
+	border: 0;
+}
+
+.cbandit-problems ul {
+	margin: 4px 0 0;
+}
+
+.cbandit-problems li {
+	margin: 0 0 4px;
+}
+
+.cbandit-figure--static {
+	border-bottom-width: 1px;
+	cursor: default;
+}
+
+.cbandit-figure--static:hover {
+	border-color: #dcdcde;
+}
+
+.cbandit-figures--3 {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.cbandit-figures--1 {
+	grid-template-columns: minmax(0, 220px);
+}
+
+.cbandit-site-metrics {
+	margin-top: 12px;
+}
+
+.cbandit-site-note {
+	margin: 0;
+	font-size: 12px;
+}
+
+.cbandit-panel-card__status {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px 12px;
+	align-items: center;
+	margin: 0;
+}
+
+/* Lead detail (S6): consent by purpose and the lead's source (BR-47). */
+.cbandit-consents {
+	margin: 0;
+}
+
+.cbandit-consents li {
+	margin: 0 0 10px;
+}
+
+.cbandit-consents__name {
+	margin-right: 8px;
+	font-weight: 600;
+}
+
+.cbandit-consents .cbandit-consent {
+	margin: 4px 0 0;
+}
+
+.cbandit-source {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 0 16px;
+}
+
+.cbandit-source h4 {
+	margin: 8px 0 0;
+	font-size: 13px;
+}
+
+.cbandit-source__id {
+	display: block;
+	overflow-wrap: anywhere;
+}
+
+.cbandit-source__pages {
+	margin: 0 0 0 18px;
+}
+
+.cbandit-source__note {
+	font-size: 12px;
+}
+
+/* Page rules that can't match on a site (decision 0021). */
+.cbandit-rule-check {
+	margin-top: 6px;
+	color: #3c434a;
+}
+
+.cbandit-rule-check__head {
+	display: block;
+	color: #996800;
+	font-weight: 600;
+}
+
+.cbandit-rule-check ul {
+	margin: 4px 0;
+	padding-inline-start: 18px;
+	list-style: disc;
+}
+
+.cbandit-rule-check li {
+	margin: 0;
+}
+
+.cbandit-page-picker {
+	width: 100%;
+	max-width: 32em;
+}
+
+/* Conditions (S11): the list with how saved conditions work beside it. */
+.cbandit-conditions__filters {
+	margin-bottom: 16px;
+}
+
+.cbandit-conditions__empty {
+	margin-top: 0;
+}
+
+.cbandit-conditions__help {
+	margin: 0;
+}
+
+.cbandit-conditions__help h2 {
+	margin: 0 0 8px;
+	font-size: 14px;
+}
+
+.cbandit-conditions__help h3 {
+	margin: 16px 0 4px;
+	font-size: 13px;
+}
+
+.cbandit-conditions__help p {
+	margin: 0;
+	color: #50575e;
+}
+
+/* Settings › Roles (S8): who can use Campaign Bandit. */
+.cbandit-roles {
+	max-width: 46rem;
+	margin: 0 0 12px;
+}
+
+.cbandit-roles th,
+.cbandit-roles td {
+	padding: 12px 16px;
+	vertical-align: middle;
+}
+
+/* The row's select and its Save sit together, not as two loose controls. */
+.cbandit-roles td .cbandit-inline-form {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+}
+
+.cbandit-roles .cbandit-muted {
+	margin-left: 6px;
+}
+
+.cbandit-roles__add {
+	margin: 0;
+}
+
+/* White label (FR-72): the agency's logo in place of the product name. */
+.cbandit-white-label__logo {
+	display: block;
+	max-width: 180px;
+	max-height: 48px;
+	width: auto;
+	height: auto;
+	margin: 0 0 6px;
+}
+
+/* Settings (S8): panels that act rather than save options sit outside the settings
+   form, so they need their own spacing. */
+.cbandit-settings__panel {
+	margin: 24px 0 0;
+}
+
+.cbandit-settings__panel > h2 {
+	margin-bottom: 4px;
+}
+
+.cbandit-settings__panel > p {
+	max-width: 46rem;
+	margin-top: 0;
+}
+
+.cbandit-roles__add {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+}
+
+.cbandit-roles__add .cbandit-inline-form {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+}
+
+.cbandit-settings__help h3 {
+	margin-bottom: 2px;
+	font-size: 13px;
+}
+
+.cbandit-settings__help p {
+	margin-top: 0;
+	color: #50575e;
+}

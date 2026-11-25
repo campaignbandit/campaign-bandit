@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "campaign-bandit/phone",
+  "title": "Phone field",
+  "category": "campaign-bandit",
+  "icon": "feedback",
+  "description": "A phone field for a Campaign Bandit form.",
+  "textdomain": "campaign-bandit",
+  "attributes": {
+    "label": {
+      "type": "string",
+      "default": "Phone"
+    },
+    "placeholder": {
+      "type": "string",
+      "default": ""
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    },
+    "fieldKey": {
+      "type": "string",
+      "default": "phone"
+    },
+    "hideLabel": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  },
+  "editorScript": "file:./index.js",
+  "parent": [
+    "campaign-bandit/form"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "campaign-bandit/hidden",
+	"title": "Hidden field",
+	"category": "campaign-bandit",
+	"icon": "hidden",
+	"description": "A value sent with every lead from this form, such as a lead source. Visitors don't see it.",
+	"textdomain": "campaign-bandit",
+	"attributes": {
+		"fieldKey": {
+			"type": "string",
+			"default": "lead_source"
+		},
+		"value": {
+			"type": "string",
+			"default": ""
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "file:./index.js",
+	"parent": [
+		"campaign-bandit/form"
+	]
+}

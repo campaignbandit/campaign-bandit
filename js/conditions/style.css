@@ -1,0 +1,48 @@
+/* Conditions screen editor (S11): the rule builder at a readable width. */
+.cbandit-condition-editor {
+	max-width: 640px;
+}
+
+.cbandit-condition-editor__fields {
+	display: grid;
+	gap: 12px;
+	margin-bottom: 24px;
+}
+
+.cbandit-condition-editor__categories {
+	margin: 0;
+	color: #646970;
+	font-size: 12px;
+}
+
+.cbandit-condition-editor__categories .components-button.is-link {
+	margin-inline-end: 8px;
+	font-size: 12px;
+}
+
+.cbandit-condition-editor__rules {
+	padding: 16px;
+	margin-bottom: 16px;
+	background: #fff;
+	border: 1px solid #dcdcde;
+}
+
+.cbandit-condition-editor__rules h2 {
+	margin-top: 0;
+	font-size: 14px;
+}
+
+/* On client sites (hub, requirements/08 P4). */
+.cbandit-condition-editor__sites {
+	margin-top: 32px;
+}
+
+.cbandit-condition-editor__sites h2 {
+	font-size: 14px;
+}
+
+.cbandit-condition-editor__problems {
+	margin: 4px 0 0 18px;
+	list-style: disc;
+	font-size: 12px;
+}

@@ -1,0 +1,40 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "campaign-bandit/long-text",
+	"title": "Long text field",
+	"category": "campaign-bandit",
+	"icon": "feedback",
+	"description": "A multi-line field for a Campaign Bandit form, such as a message.",
+	"textdomain": "campaign-bandit",
+	"attributes": {
+		"label": {
+			"type": "string",
+			"default": "Message"
+		},
+		"placeholder": {
+			"type": "string",
+			"default": ""
+		},
+		"required": {
+			"type": "boolean",
+			"default": false
+		},
+		"fieldKey": {
+			"type": "string",
+			"default": "message"
+		},
+		"hideLabel": {
+			"type": "boolean",
+			"default": false
+		}
+	},
+	"supports": {
+		"html": false,
+		"reusable": false
+	},
+	"editorScript": "file:./index.js",
+	"parent": [
+		"campaign-bandit/form"
+	]
+}

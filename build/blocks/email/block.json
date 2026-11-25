@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "campaign-bandit/email",
+  "title": "Email field",
+  "category": "campaign-bandit",
+  "icon": "feedback",
+  "description": "A email field for a Campaign Bandit form.",
+  "textdomain": "campaign-bandit",
+  "attributes": {
+    "label": {
+      "type": "string",
+      "default": "Email"
+    },
+    "placeholder": {
+      "type": "string",
+      "default": ""
+    },
+    "required": {
+      "type": "boolean",
+      "default": false
+    },
+    "fieldKey": {
+      "type": "string",
+      "default": "email"
+    },
+    "hideLabel": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "supports": {
+    "html": false,
+    "reusable": false
+  },
+  "editorScript": "file:./index.js",
+  "parent": [
+    "campaign-bandit/form"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "campaign-bandit/inline",
+	"title": "Campaign Bandit Inline",
+	"category": "widgets",
+	"icon": "megaphone",
+	"description": "Places an inline campaign here. It shows to visitors it qualifies for.",
+	"keywords": [ "campaign", "form", "lead", "signup" ],
+	"textdomain": "campaign-bandit",
+	"attributes": {
+		"campaign": { "type": "string", "default": "" }
+	},
+	"supports": { "html": false, "reusable": false },
+	"editorScript": "file:./index.js"
+}
