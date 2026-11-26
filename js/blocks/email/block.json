@@ -5,7 +5,7 @@
 	"title": "Email field",
 	"category": "campaign-bandit",
 	"icon": "feedback",
-	"description": "A email field for a Campaign Bandit form.",
+	"description": "An email field for a Campaign Bandit form.",
 	"textdomain": "campaign-bandit",
 	"attributes": {
 		"label": {

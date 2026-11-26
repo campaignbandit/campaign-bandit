@@ -1116,13 +1116,13 @@ function AudiencePanel() {
 				<Section
 					title={ __( 'Page exclusions', 'campaign-bandit' ) }
 					help={ __(
-						'The site’s default exclusions. Turn off only if this campaign belongs on those pages.',
+						'The site’s default exclusions. The cart and checkout are added when WooCommerce is running. Turn off only if this campaign belongs on those pages.',
 						'campaign-bandit'
 					) }
 				>
 					<ToggleControl
 						label={ __(
-							'Never on login, admin, cart and checkout pages',
+							'Never on the login and admin pages',
 							'campaign-bandit'
 						) }
 						checked={ r.default_excludes !== false }

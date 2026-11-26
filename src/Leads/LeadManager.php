@@ -77,6 +77,30 @@ final class LeadManager {
 	}
 
 	/**
+	 * The field keys that are consent questions, for a lead's own version.
+	 *
+	 * The answer to a consent question is kept with the other fields, because that is
+	 * what the visitor sent, but it is shown under Consent with its purpose and the
+	 * exact text they agreed to (FR-23, BR-44). Listing it again among the fields as a
+	 * bare "consent: yes" says less and reads like a second, different answer.
+	 *
+	 * @param array<string, mixed> $lead Lead row.
+	 * @return string[]
+	 */
+	public function consent_keys( array $lead ): array {
+		$keys    = array();
+		$version = $this->versions->find_number( (string) $lead['campaign_uid'], (int) $lead['version_number'] );
+		if ( null !== $version ) {
+			foreach ( FormSchema::from_blocks( parse_blocks( $version->content ) )->fields as $field ) {
+				if ( 'consent' === ( $field['type'] ?? '' ) && '' !== $field['key'] ) {
+					$keys[] = (string) $field['key'];
+				}
+			}
+		}
+		return $keys;
+	}
+
+	/**
 	 * Labels for a lead's fields, from the form in the version it was submitted to.
 	 * Keys without a label (or from a version that no longer exists) map to themselves.
 	 *

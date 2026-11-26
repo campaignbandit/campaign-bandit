@@ -175,7 +175,7 @@ ${
 		? ''
 		: '.is-root-container.wp-block-post-content::before{content:"\\00d7";position:absolute;top:6px;right:12px;font:24px/1 sans-serif;color:#50575e;pointer-events:none}'
 }
-.cbandit-form>.block-editor-inner-blocks>.block-editor-block-list__layout{display:flex;flex-wrap:wrap;gap:12px 16px;margin-bottom:12px}
+.cbandit-form>.block-editor-inner-blocks>.block-editor-block-list__layout{display:flex;flex-direction:row;flex-wrap:wrap;gap:12px 16px;margin-bottom:12px}
 .cbandit-form>.block-editor-inner-blocks>.block-editor-block-list__layout>*{flex:1 1 180px}
 .cbandit-form .cbandit-field{margin:0!important}
 .cbandit-form .cbandit-field--consent,.cbandit-form .cbandit-field--choice,.cbandit-form .cbandit-field--long_text,.cbandit-form .block-list-appender{flex-basis:100%!important}

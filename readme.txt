@@ -4,7 +4,7 @@ Tags: popup, lead generation, forms, block editor, campaigns
 Requires at least: 6.9
 Tested up to: 7.1
 Requires PHP: 8.2
-Stable tag: 0.1.0
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,62 +12,89 @@ Build popups and inline forms with the block editor, target them by page and dev
 
 == Description ==
 
-Campaign Bandit builds conversion campaigns the same way you build a page: in the block editor, with the core blocks you already know. No separate designer, no shortcode soup, no second interface to learn.
+**Every other popup plugin asks you to learn its editor.** Campaign Bandit asks you to use the one you already know.
 
-A campaign is a popup or an inline block with a form in it. You decide where it shows, when it appears, and what happens when somebody fills it in. Leads are stored in your own database and exported as CSV whenever you want them.
+A campaign is a popup or an inline block, built in the WordPress block editor with the same groups, headings, images, buttons and columns you use on every page. No separate designer, no shortcode soup, no second interface with its own idea of what a column is. If you can build a page, you can build a popup — and it will look like the rest of your site, because it is made of the same things.
 
-= What you can build =
+Leads go into your own database. Not ours, not anybody's. There is no account to create, no API key to paste, and no service to sign up for.
 
-* **Modal popups and inline campaigns**, designed with core blocks: groups, headings, paragraphs, images, buttons and lists
-* **Forms** from Campaign Bandit's own blocks: email, text, long text, phone, date, choice and consent fields
-* **A designed thank-you screen** that replaces the form after someone sends it
-* **Eight starter patterns** to begin from, half of them image-led and half type-only
+= Ready to get started? =
 
-= Where and when it shows =
+* [campaignbandit.com](https://campaignbandit.com/?utm_source=wordpress-org&utm_medium=readme&utm_campaign=description) – what it does, and who it is for
+* [Documentation](https://campaignbandit.com/docs/?utm_source=wordpress-org&utm_medium=readme&utm_campaign=description) – setup, targeting, forms and delivery
+* [How it works](https://campaignbandit.com/how-it-works/?utm_source=wordpress-org&utm_medium=readme&utm_campaign=description) – the short version, with pictures
+* [Pricing](https://campaignbandit.com/pricing/?utm_source=wordpress-org&utm_medium=readme&utm_campaign=description) – what the paid add-on costs, if you ever want it
 
-* **Page rules**: the front page, a single post or page, a child of a page, or a URL path
-* **Device rules**: mobile, tablet or desktop
-* **Triggers**: after a number of seconds, or on a click
-* **Frequency**: the same visitor sees a campaign at most once every seven days
+= Design it with blocks, not with a form builder =
 
-= What happens to leads =
+Open a campaign and you are in Gutenberg. Use core blocks for the layout and Campaign Bandit's own blocks for the parts a form needs: email, text, long text, phone, date, choice and consent fields. Design a thank-you screen that replaces the form once somebody sends it, so the moment after conversion is designed rather than default.
 
-* Stored in your own WordPress, in your own database
-* Exported as CSV
-* Included in WordPress's own personal data export and erase tools
-* Deleted automatically after a retention period you choose
+Eight starter patterns ship with the plugin — four image-led, four type-only — so the first campaign is a few edits rather than a blank canvas.
 
-= Privacy, in plain terms =
+= Say exactly where and when it shows =
 
-Campaign Bandit does not call any external service on its own, and nothing about your visitors is sent anywhere. Visitor state — which campaigns someone has seen or dismissed — is kept in their own browser, not on your server, and carries no personal data. IP addresses are never stored. If your site uses a consent tool, Campaign Bandit waits for consent before recording where a lead came from.
+* **Page rules** – the front page, a single post or page, a child of a chosen page, or a URL path with wildcards
+* **Device rules** – mobile, tablet or desktop
+* **Triggers** – after a number of seconds, or when somebody clicks a link or button you choose
+* **Frequency** – the same visitor sees a campaign at most once every seven days
+* **Page exclusions** – the login and admin pages are left alone unless you say otherwise, and the cart and checkout too when WooCommerce is running
 
-There is one optional download, described under "External services" below. It is off until you turn it on.
+Rules that depend on the visitor are decided in the browser, so a cached page cannot freeze one visitor's campaign for everyone else. Rules that depend on the page are decided on the server, so a page that can never match renders nothing at all.
 
-= A paid add-on exists =
+= Keep every lead, and prove where it came from =
 
-Campaign Bandit Pro is a separate plugin, sold and updated outside WordPress.org, that adds slide-ins and sticky bars, more triggers and targeting rules, webhook delivery to your CRM, versions and rollback, and an agency hub for running campaigns across client sites.
+Leads land in **Campaign Bandit › Leads** with the campaign and version that produced them. Filter by campaign or date, search by name or email, export the lot as CSV. Each lead carries the consent text that was on screen when it was submitted, so you can show what somebody actually agreed to.
 
-This plugin is complete without it. Nothing here is a trial, nothing expires, and no feature is locked behind a key.
+= Your visitors' data stays on your site =
+
+This is the part most popup plugins cannot say plainly, so here it is in full:
+
+* Campaign Bandit calls **no external service** of its own, and nothing about your visitors is sent anywhere
+* **No account**, no API key, no sign-up
+* IP addresses are **never stored**
+* Visitor state — which campaigns somebody has seen or dismissed — lives in their own browser, not on your server, and holds no personal data
+* Leads are included in WordPress's own personal data **export and erase** tools
+* Leads are deleted automatically after a retention period you choose
+* If your site uses a consent tool, Campaign Bandit reads it: the WP Consent API, Complianz, CookieYes and Cookiebot. Campaigns still show, because showing a campaign needs no consent — what waits is recording where a lead came from
+
+One optional download exists, described under **External services** below, and it is off until you turn it on.
+
+= Everything above is in the free plugin =
+
+No trial, no expiry, no feature locked behind a key, no nag to upgrade before you can finish what you started. The free plugin is the whole product for one site.
+
+= Campaign Bandit Pro, if you outgrow it =
+
+A separate add-on, sold at [campaignbandit.com](https://campaignbandit.com/pricing/?utm_source=wordpress-org&utm_medium=readme&utm_campaign=pro) and not required for anything above. It adds:
+
+* **Slide-ins and sticky bars** alongside popups and inline campaigns
+* **Scroll, exit intent, hover and custom event triggers**
+* **Scheduling, URL parameter and country rules**, several rule sets, and saved conditions you reuse across campaigns
+* **Webhook delivery** to your CRM, Zapier or Make, with retries and a delivery log that shows every attempt
+* **Versions and rollback**, and an explanation of why each campaign showed for any given lead
+* **Configurable frequency**, priority between campaigns, and suppression after a dismissal or a conversion
+
+For agencies, the Agency plans add a hub that runs campaigns across client sites from one WordPress — publishing to chosen sites, per-site settings, and every lead from every site in one place. That is what [campaignbandit.com/for-agencies](https://campaignbandit.com/for-agencies/?utm_source=wordpress-org&utm_medium=readme&utm_campaign=agencies) is about.
 
 == Installation ==
 
 1. Install and activate the plugin.
-2. Go to **Campaign Bandit > Campaigns** and choose **New campaign**.
+2. Go to **Campaign Bandit › Campaigns** and choose **New campaign**.
 3. Start blank or pick a starter pattern, then design it in the block editor.
 4. Set where it shows under **Display conditions**, and when under **Triggers**.
 5. Publish. The campaign goes live on your site.
 
-Leads arrive under **Campaign Bandit > Leads**.
+Leads arrive under **Campaign Bandit › Leads**. There is nothing else to configure and nothing to connect.
 
 == Frequently Asked Questions ==
 
 = Do I need an account anywhere? =
 
-No. The plugin works entirely on your own site and never asks you to register.
+No. The plugin works entirely on your own site and never asks you to register for anything.
 
 = Where are leads stored? =
 
-In your own WordPress database, in the plugin's own table. You can export them as CSV, and they are included in WordPress's personal data export and erase tools.
+In your own WordPress database, in the plugin's own table. Export them as CSV whenever you like. They are included in WordPress's personal data export and erase tools, and deleted automatically after a retention period you choose.
 
 = Does it slow my site down? =
 
@@ -81,15 +108,31 @@ Yes. Rules that depend on the visitor are decided in the browser, so a cached pa
 
 Yes. Campaign Bandit reads the WP Consent API and several consent plugins directly. Campaigns still show, because showing a campaign needs no consent; what waits is recording which campaign and which source a lead came from.
 
-= What does the paid add-on add? =
+= Can I style the popup to match my theme? =
 
-Slide-ins and sticky bars, scroll and exit-intent triggers, scheduling and country rules, webhook delivery with retries and a delivery log, campaign versions with rollback, and a hub for running campaigns across many sites. It is a separate plugin and is not required.
+It is built from your theme's own blocks, so it inherits your theme's styles by default, and you change anything you like in the block editor as you would on a page.
+
+= Which formats does the free plugin have? =
+
+Popups (modal) and inline campaigns. Slide-ins and sticky bars are in the paid add-on.
+
+= Can I send leads to my CRM or to Zapier? =
+
+Not with the free plugin, which stores leads on your site and exports CSV. Webhook delivery, with retries and a delivery log, is in the paid add-on.
+
+= I run sites for clients. Can I manage all of them from one place? =
+
+That is what the Agency plans are for: one WordPress acts as a hub and publishes campaigns to connected client sites, which run this free plugin. See [campaignbandit.com/for-agencies](https://campaignbandit.com/for-agencies/?utm_source=wordpress-org&utm_medium=readme&utm_campaign=faq).
+
+= Where do I report a bug or ask for a feature? =
+
+The free plugin's source is at [github.com/campaignbandit/campaign-bandit](https://github.com/campaignbandit/campaign-bandit), and issues there are read.
 
 == External services ==
 
 Campaign Bandit contacts no external service on its own, and never sends anything about your visitors anywhere.
 
-One optional download exists. Under Campaign Bandit > Settings > Country targeting you can choose to use a country database, and only then does the site download one file from DB-IP:
+One optional download exists. Under Campaign Bandit › Settings › Country targeting you can choose to use a country database, and only then does the site download one file from DB-IP:
 
 * Service: DB-IP (https://db-ip.com), the free IP to Country Lite database.
 * When: after you turn the setting on, and once a month after that, from your server on a scheduled task.
@@ -112,9 +155,9 @@ The JavaScript in `build/` is compiled and minified. The source it is built from
 * `js/conditions/` — the display conditions editor
 * `js/explain/` — the "Explain this page" tool
 
-PHP is in `src/`, autoloaded by namespace, and is not minified or obfuscated anywhere.
+PHP is in `src/`, autoloaded by namespace, and is not minified or obfuscated anywhere. The source also lives at [github.com/campaignbandit/campaign-bandit](https://github.com/campaignbandit/campaign-bandit).
 
 == Changelog ==
 
-= 0.1.0 =
+= 1.0.0 =
 * First release.

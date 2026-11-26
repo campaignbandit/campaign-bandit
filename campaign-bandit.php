@@ -3,10 +3,11 @@
  * Plugin Name:       Campaign Bandit
  * Plugin URI:        https://github.com/campaignbandit/campaign-bandit
  * Description:       Conversion campaigns (popups and inline forms) built in the block editor, with leads stored in WordPress.
- * Version:           0.1.0
+ * Version:           1.0.0
  * Requires at least: 6.9
  * Requires PHP:      8.2
- * Author:            Drag Ivko
+ * Author:            Campaign Bandit
+ * Author URI:        https://campaignbandit.com/
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       campaign-bandit
@@ -16,7 +17,7 @@
 
 defined( 'ABSPATH' ) || exit;
 
-define( 'CAMPAIGNBANDIT_VERSION', '0.1.0' );
+define( 'CAMPAIGNBANDIT_VERSION', '1.0.0' );
 define( 'CAMPAIGNBANDIT_FILE', __FILE__ );
 define( 'CAMPAIGNBANDIT_DIR', __DIR__ );
 

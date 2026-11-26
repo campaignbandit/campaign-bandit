@@ -16,6 +16,7 @@ import {
 	ToggleControl,
 } from '@wordpress/components';
 import { __ } from '@wordpress/i18n';
+import { isGoal, withoutGoalClass } from './button-goal';
 
 export const ACTIONS = [ 'link', 'close', 'call', 'text' ];
 
@@ -173,10 +174,18 @@ const withCampaignButton = createHigherOrderComponent(
 								'For campaigns whose goal is "Button clicked": a click or tap here is a conversion.',
 								'campaign-bandit'
 							) }
-							checked={ Boolean( attributes.cbanditGoal ) }
-							onChange={ ( cbanditGoal ) =>
+							checked={ isGoal( attributes ) }
+							onChange={ ( on ) =>
 								setAttributes( {
-									cbanditGoal: cbanditGoal || undefined,
+									cbanditGoal: on || undefined,
+									// Turning it off has to remove the class too, or
+									// the switch says off while the campaign still
+									// counts the click.
+									className: on
+										? attributes.className
+										: withoutGoalClass(
+												attributes.className
+											),
 								} )
 							}
 							__nextHasNoMarginBottom

@@ -12,6 +12,7 @@ use CampaignBandit\Audit\AuditLog;
 use CampaignBandit\Geo\CountryDatabase;
 use CampaignBandit\Geo\CountryHeaders;
 use CampaignBandit\Geo\CountryIndex;
+use CampaignBandit\Leads\SpamGuard;
 use CampaignBandit\Package\PackageWriter;
 use CampaignBandit\Settings\CountrySettings;
 use CampaignBandit\Plugin;
@@ -292,6 +293,13 @@ final class RestController {
 	 * @param WP_REST_Request $request Request.
 	 */
 	public static function event( WP_REST_Request $request ): WP_REST_Response {
+		// Public and unauthenticated, so it is rate limited like a submission (05 §8).
+		// Silently, with the same 204: the runtime does not read the response, and a
+		// different answer would only tell somebody probing it that they had been seen.
+		if ( ! SpamGuard::within_event_limit( self::visitor_ip() ) ) {
+			return new WP_REST_Response( null, 204 );
+		}
+
 		$data = json_decode( (string) $request->get_body(), true );
 		if ( is_array( $data ) && is_string( $data['campaign'] ?? null ) && Ulid::is_valid( $data['campaign'] ) ) {
 			Plugin::metrics()->record(

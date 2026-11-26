@@ -53,13 +53,27 @@ final class Roles {
 	}
 
 	/**
-	 * Display name for a role.
+	 * Display name for a role, stored as English on purpose.
+	 *
+	 * WordPress keeps a role's display name in the database as it was given, so
+	 * translating it here would freeze whatever language was active at install and leave
+	 * it wrong after the site changes language. Core stores its own role names in
+	 * English for that reason and translates them on display with
+	 * `translate_user_role()`.
+	 *
+	 * Translating here also called `__()` during `plugins_loaded`, before `init`, which
+	 * is what WordPress 6.7 and later warn about with
+	 * `_load_textdomain_just_in_time`. `install()` runs from `Plugin::boot()` whenever
+	 * the schema changes, so a fresh install produced that notice.
+	 *
+	 * Our own screens never show these strings: Settings › Roles has its own labels in
+	 * `RoleAssignments::labels()`, translated where they are rendered.
 	 *
 	 * @param string $role Role name.
 	 */
 	private static function label( string $role ): string {
 		return Capabilities::ROLE_MANAGER === $role
-			? __( 'Campaign Bandit Manager', 'campaign-bandit' )
-			: __( 'Campaign Bandit Editor', 'campaign-bandit' );
+			? 'Campaign Bandit Manager'
+			: 'Campaign Bandit Editor';
 	}
 }

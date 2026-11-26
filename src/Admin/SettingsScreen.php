@@ -305,6 +305,8 @@ final class SettingsScreen {
 		$result = isset( $_GET['lead_email_test'] ) ? sanitize_key( $_GET['lead_email_test'] ) : ''; // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- display only.
 		if ( 'sent' === $result ) {
 			echo '<p><span class="cbandit-status cbandit-status--good">' . esc_html__( 'Test email sent', 'campaign-bandit' ) . '</span></p>';
+		} elseif ( 'no_addresses' === $result ) {
+			echo '<p><span class="cbandit-status cbandit-status--bad">' . esc_html__( 'Nothing to send to', 'campaign-bandit' ) . '</span> ' . esc_html__( 'Add at least one address first.', 'campaign-bandit' ) . '</p>';
 		} elseif ( 'failed' === $result ) {
 			echo '<p><span class="cbandit-status cbandit-status--bad">' . esc_html__( 'Couldn\'t send', 'campaign-bandit' ) . '</span> ' . esc_html( LeadNotifier::failure_message() ) . '</p>';
 		}
@@ -493,7 +495,14 @@ final class SettingsScreen {
 			wp_die( esc_html__( 'You are not allowed to change Campaign Bandit settings.', 'campaign-bandit' ), 403 );
 		}
 		$result = LeadNotifier::test();
-		wp_safe_redirect( add_query_arg( 'lead_email_test', true === $result ? 'sent' : 'failed', self::url() ) );
+		// A failure has a reason, and "no addresses saved" is not a mail problem. Carry
+		// the code through, so the notice can say which it was rather than sending
+		// everybody off to check their SMTP settings.
+		$state = true === $result ? 'sent' : 'failed';
+		if ( is_wp_error( $result ) && 'campaignbandit_no_addresses' === $result->get_error_code() ) {
+			$state = 'no_addresses';
+		}
+		wp_safe_redirect( add_query_arg( 'lead_email_test', $state, self::url() ) );
 		exit;
 	}
 

@@ -36,7 +36,7 @@ const CSS = `
 .cbandit-after:focus{outline:none}
 .wp-block-column:has(>.cbandit-after:not([hidden])){display:flex;flex-direction:column;justify-content:center}
 .cbandit-sr{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-.cbandit-form{display:flex;flex-wrap:wrap;gap:12px 16px;align-items:flex-end}
+.cbandit-form{display:flex;flex-direction:row;flex-wrap:wrap;gap:12px 16px;align-items:flex-end}
 .cbandit-form>*{flex:1 1 100%}
 .cbandit-form>.cbandit-field{flex:1 1 180px}
 .cbandit-form--row{gap:12px 0;align-items:flex-start}

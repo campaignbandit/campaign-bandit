@@ -397,10 +397,12 @@ final class LeadsScreen {
 	 * @param LeadFilter           $filter  Current list filter, to return to.
 	 */
 	private static function render_detail( LeadManager $manager, array $lead, LeadFilter $filter ): void {
-		$uid      = (string) $lead['uid'];
-		$fields   = json_decode( (string) $lead['fields'], true );
-		$utm      = array_filter( (array) json_decode( (string) ( $lead['utm'] ?? '' ), true ) );
-		$labels   = $manager->field_labels( $lead );
+		$uid    = (string) $lead['uid'];
+		$fields = json_decode( (string) $lead['fields'], true );
+		$utm    = array_filter( (array) json_decode( (string) ( $lead['utm'] ?? '' ), true ) );
+		$labels = $manager->field_labels( $lead );
+		// Consent answers have their own section below, with the purpose and the text.
+		$consents = $manager->consent_keys( $lead );
 		$campaign = $manager->campaign_name( (string) $lead['campaign_uid'] );
 		$received = LeadCsv::site_time( (string) $lead['submitted_at'], wp_timezone() );
 		$close    = self::url( $filter->to_query_args() );
@@ -438,6 +440,9 @@ final class LeadsScreen {
 			<h3><?php esc_html_e( 'Fields', 'campaign-bandit' ); ?></h3>
 			<dl class="cbandit-dl">
 				<?php foreach ( is_array( $fields ) ? $fields : array() as $key => $value ) : ?>
+					<?php if ( in_array( (string) $key, $consents, true ) ) : ?>
+						<?php continue; ?>
+					<?php endif; ?>
 					<dt><?php echo esc_html( $labels[ $key ] ?? (string) $key ); ?></dt>
 					<dd><?php echo esc_html( '' !== LeadCsv::value( $value ) ? LeadCsv::value( $value ) : '—' ); ?></dd>
 				<?php endforeach; ?>
